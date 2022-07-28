@@ -334,11 +334,11 @@ class VideoData(pl.LightningDataModule):
                                   text_len=self.args.text_seq_len, truncate_captions=self.args.truncate_captions)
             elif hasattr(self.args, 'sample_every_n_frames') and self.args.sample_every_n_frames>1:
                 # HACK flexible video diffusion data sets are in our folder
-                Dataset = TensorDataset if self.args.data_path.contains(video_diffusion_path) else VideoDataset if osp.isdir(self.args.data_path) else HDF5Dataset
+                Dataset = TensorDataset if self.args.data_path.find(video_diffusion_path) > 0 else VideoDataset if osp.isdir(self.args.data_path) else HDF5Dataset
                 dataset = Dataset(self.args.data_path, self.args.sequence_length,
                                   train=train, resolution=self.args.resolution, sample_every_n_frames=self.args.sample_every_n_frames)
             else:
-                Dataset = TensorDataset if self.args.data_path.contains(video_diffusion_path) else VideoDataset if osp.isdir(self.args.data_path) else HDF5Dataset
+                Dataset = TensorDataset if self.args.data_path.find(video_diffusion_path) > 0 else VideoDataset if osp.isdir(self.args.data_path) else HDF5Dataset
                 dataset = Dataset(self.args.data_path, self.args.sequence_length,
                                   train=train, resolution=self.args.resolution)
         return dataset
