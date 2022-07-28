@@ -41,7 +41,8 @@ def main():
 
     kwargs = dict()
     if args.gpus > 1:
-        kwargs = dict(distributed_backend='ddp', gpus=args.gpus)
+        kwargs = dict(strategy='ddp', accelerator='gpu', devices=args.gpus)
+        # kwargs = dict(distributed_backend='ddp', gpus=args.gpus)
 
     # load the most recent checkpoint file
     base_dir = os.path.join(args.default_root_dir, 'lightning_logs')
@@ -66,7 +67,7 @@ def main():
     #             args.resume_from_checkpoint = os.path.join(ckpt_folder, ckpt_file)
     #             print('will start from the recent ckpt %s'%args.resume_from_checkpoint)
 
-    trainer = pl.Trainer.from_argparse_args(args, callbacks=callbacks, 
+    trainer = pl.Trainer.from_argparse_args(args, callbacks=callbacks,
                                             max_steps=args.max_steps, **kwargs)
 
     trainer.fit(model, data)
