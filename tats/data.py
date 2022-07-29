@@ -93,7 +93,7 @@ class TensorDataset(data.Dataset):
     videos in the range [-0.5, 0.5]
 
     """
-    exts = ['pt']
+    exts = ['pt', 'npy']
 
     def __init__(self, data_folder, sequence_length, train=True, resolution=64, sample_every_n_frames=1):
         """
@@ -139,9 +139,16 @@ class TensorDataset(data.Dataset):
         return len(self.files)
 
     def __getitem__(self, idx):
-        video = torch.load(self.files[idx])
+        if self.files[idx].endswith(".pt"):
+            video = torch.load(self.files[idx])
+        else:
+            video = torch.from_numpy(np.load(self.files[idx]))
+        assert video.dtype == torch.uint8
         T, W, H, C = video.shape # self.resolution
+        assert W == H
         resolution = W
+        assert resolution == self.resolution
+        assert C == 3
         # while True:
         #     try:
         #         video, _, _, idx = self._clips.get_clip(idx)
@@ -151,7 +158,7 @@ class TensorDataset(data.Dataset):
         #     break
 
         offset = np.random.randint(T-self.sequence_length)
-        video = video[offset:offset+sequence_length]
+        video = video[offset:offset+self.sequence_length]
 
         # class_name = get_parent_dir(self._clips.video_paths[idx])
         label = 0 # self.class_to_label[class_name]
