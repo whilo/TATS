@@ -87,6 +87,18 @@ class VideoDataset(data.Dataset):
         label = self.class_to_label[class_name]
         return dict(**preprocess(video, resolution, sample_every_n_frames=self.sample_every_n_frames), label=label)
 
+# TODO move into utils
+from filelock import FileLock
+from pathlib import Path
+
+class Protect(FileLock):
+    """ Given a file path, this class will create a lock file and prevent race conditions
+        using a FileLock. The FileLock path is automatically inferred from the file path.
+    """
+    def __init__(self, path, timeout=2, **kwargs):
+        path = Path(path)
+        lock_path = Path(path).parent / f"{path.name}.lock"
+        super().__init__(lock_path, timeout=timeout, **kwargs)
 
 class TensorDataset(data.Dataset):
     """Pytorch Tensor dataset for videos files stored in folders Returns BCTHW
@@ -110,7 +122,7 @@ class TensorDataset(data.Dataset):
         self.sample_every_n_frames = sample_every_n_frames
 
         folder = osp.join(data_folder, 'train' if train else 'test')
-        self.files = sum([glob.glob(osp.join(folder, '**', f'*.{ext}'), recursive=True)
+        self.files = sum([glob.glob(osp.join(self.folder, '**', f'*.{ext}'), recursive=True)
                         for ext in self.exts], [])
 
         # hacky way to compute # of classes (count # of unique parent directories)
@@ -139,10 +151,13 @@ class TensorDataset(data.Dataset):
         return len(self.files)
 
     def __getitem__(self, idx):
-        if self.files[idx].endswith(".pt"):
-            video = torch.load(self.files[idx])
+        path = files[idx]
+        self.cache_file(path)
+
+        if self.path.endswith(".pt"):
+            video = torch.load(path)
         else:
-            video = torch.from_numpy(np.load(self.files[idx]))
+            video = torch.from_numpy(np.load(path))
         assert video.dtype == torch.uint8
         T, W, H, C = video.shape # self.resolution
         assert W == H
@@ -163,6 +178,28 @@ class TensorDataset(data.Dataset):
         # class_name = get_parent_dir(self._clips.video_paths[idx])
         label = 0 # self.class_to_label[class_name]
         return dict(**preprocess(video, resolution, sample_every_n_frames=self.sample_every_n_frames), label=label)
+
+    def cache_file(self, path):
+        # Given a path to a dataset item, makes sure that the item is cached in the temporary directory.
+        if not path.exists():
+            path.parent.mkdir(parents=True, exist_ok=True)
+            src_path = self.get_src_path(path)
+            with Protect(path):
+                shutil.copyfile(str(src_path), str(path))
+
+    @staticmethod
+    def get_src_path(path):
+        """ Returns the source path to a file. This function is mainly used to handle SLURM_TMPDIR on ComputeCanada.
+            If DATA_ROOT is defined as an environment variable, the datasets are copied to it as they are accessed. This function is called
+            when we need the source path from a given path under DATA_ROOT.
+        """
+        if "DATA_ROOT" in os.environ and os.environ["DATA_ROOT"] != "":
+            # Verify that the path is under
+            data_root = Path(os.environ["DATA_ROOT"])
+            assert data_root in path.parents, f"Expected dataset item path ({path}) to be located under the data root ({data_root})."
+            src_path = Path(*path.parts[len(data_root.parts):]) # drops the data_root part from the path, to get the relative path to the source file.
+            return src_path
+        return path
 
 
 def get_parent_dir(path):
