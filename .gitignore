@@ -1,6 +1,7 @@
 __pycache__/
 **/__pycache__/
 lightning_logs/
+data/
 .ipynb_checkpoints/
 *.mp4
 *.egg-info
