@@ -151,8 +151,7 @@ class TensorDataset(data.Dataset):
         return len(self.files)
 
     def __getitem__(self, idx):
-        path = files[idx]
-        self.cache_file(path)
+        path = self.cache_file(files[idx])
 
         if self.path.endswith(".pt"):
             video = torch.load(path)
@@ -180,26 +179,20 @@ class TensorDataset(data.Dataset):
         return dict(**preprocess(video, resolution, sample_every_n_frames=self.sample_every_n_frames), label=label)
 
     def cache_file(self, path):
+        path = Path(path)
         # Given a path to a dataset item, makes sure that the item is cached in the temporary directory.
-        if not path.exists():
-            path.parent.mkdir(parents=True, exist_ok=True)
-            src_path = self.get_src_path(path)
-            with Protect(path):
-                shutil.copyfile(str(src_path), str(path))
+        tmpdir = Path(os.environ["SLURM_TMPDIR"])
+        if not tmpdir.exists():
+            print("WARNING: Local caching is not available.")
+            return str(path)
 
-    @staticmethod
-    def get_src_path(path):
-        """ Returns the source path to a file. This function is mainly used to handle SLURM_TMPDIR on ComputeCanada.
-            If DATA_ROOT is defined as an environment variable, the datasets are copied to it as they are accessed. This function is called
-            when we need the source path from a given path under DATA_ROOT.
-        """
-        if "DATA_ROOT" in os.environ and os.environ["DATA_ROOT"] != "":
-            # Verify that the path is under
-            data_root = Path(os.environ["DATA_ROOT"])
-            assert data_root in path.parents, f"Expected dataset item path ({path}) to be located under the data root ({data_root})."
-            src_path = Path(*path.parts[len(data_root.parts):]) # drops the data_root part from the path, to get the relative path to the source file.
-            return src_path
-        return path
+        PL = len(path.parts) - 4 # prefix offset, TATS/data/mazes/video1.npy
+        target_path = tmpdir / Path(*path.parts[PL:])
+        if not target_path.exists():
+            target_path.parent.mkdir(parents=True, exist_ok=True)
+            with Protect(path):
+                shutil.copyfile(str(path), str(target_path))
+        return str(target_path)
 
 
 def get_parent_dir(path):
