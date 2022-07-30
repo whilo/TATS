@@ -6,12 +6,21 @@
 #SBATCH --account=rrg-kevinlb
 #SBATCH --output=%x-%j.out
 #SBATCH --time=00-0:15
-#SBATCH --mem=4G
-
+#SBATCH --mem=40G
 # ---------------------------------------------------------------------
 echo "Current working directory: `pwd`"
 echo "Starting run at: `/bin/date`"
 echo "Hostname: `hostname`"
+
+# ====================
+# gotchas:
+# - ntasks-per-node has to match number of gpus per node
+# - WORLD_SIZE=8 defined below has to match total number of gpus (nnodes * gpus/node)
+# - mem=40G may be overkill but 1gb didn't work
+# - has to be run on CC, plai clusters don't have NCCL backend working (and gloo doens't work either)
+# - python script has to be unnested from scripts directory to avoid module not found error
+# =====================
+
 
 export OMP_NUM_THREADS=1
 export WORLD_SIZE=8
@@ -64,9 +73,18 @@ export NCCL_BLOCKING_WAIT=1 # Pytorch Lightning uses the NCCL backend for
                             # OVERHEAD)
 echo "Running job with the NCCL backend"
 export PL_TORCH_DISTRIBUTED_BACKEND=nccl
-# srun -w"${valid_nodes}" -N${num_valid_nodes} -n${WORLD_SIZE} \
-#     -c${SLURM_CPUS_PER_TASK} -o ./output/demo_gloo_lightning_output.out -D"$(dirname "$(pwd)")" \
-#     python /home/vadmas/vadmas/distributed-training-pytorch/demo_pytorch_lightning.py --gpus=${num_gpus_per_node} --nnodes=${num_valid_nodes}
+echo "Running the following command: "
+echo "srun -w"${valid_nodes}" -N${num_valid_nodes} -n${WORLD_SIZE} \
+    -c${SLURM_CPUS_PER_TASK} -o ./output/demo_gloo_lightning_output.out -D"$(dirname "$(pwd)")" \
+    python /home/vadmas/scratch/diffusion/TATS/train_vqgan.py --embedding_dim 256 --n_codes 16384 --n_hiddens 32 --downsample 4 8 8 --no_random_restart \
+                      --gpus=${num_gpus_per_node} --nnodes=${num_valid_nodes} --sync_batchnorm --batch_size 2 \
+                      --num_workers 32 --accumulate_grad_batches 6 \
+                      --progress_bar_refresh_rate 500 --max_steps 2000 --gradient_clip_val 1.0 --lr 3e-5 \
+                      --data_path /home/vadmas/scratch/diffusion/TATS/data/sky_timelapse_small  --image_folder --default_root_dir /home/vadmas/scratch/diffusion/TATS/checkpoints \
+                      --resolution 128 --sequence_length 16 --discriminator_iter_start 10000 --norm_type batch \
+                      --perceptual_weight 4 --image_gan_weight 1 --video_gan_weight 1  --gan_feat_weight 4
+"
+
 
 srun -w"${valid_nodes}" -N${num_valid_nodes} -n${WORLD_SIZE} \
     -c${SLURM_CPUS_PER_TASK} -o ./output/demo_gloo_lightning_output.out -D"$(dirname "$(pwd)")" \
