@@ -294,8 +294,13 @@ class VideoData(pl.LightningDataModule):
         return dataset.n_classes
 
     def _dataset(self, train):
+        def is_video_diffusion_data_path(path):
+            result = path.find("minerl") > 0 or path.find("mazes") > 0 or path.find("carla") > 0
+            if result:
+                print("Training on video diffusion data set.")
+            return result
+
         # check if it's coinrun dataset (path contains coinrun and it's a directory)
-        video_diffusion_path = "saeid"
         if osp.isdir(self.args.data_path) and 'coinrun' in self.args.data_path.lower():
             if hasattr(self.args, 'coinrun_v2_dataloader') and self.args.coinrun_v2_dataloader:
                 Dataset = CoinRunDatasetV2
@@ -341,11 +346,11 @@ class VideoData(pl.LightningDataModule):
                                   text_len=self.args.text_seq_len, truncate_captions=self.args.truncate_captions)
             elif hasattr(self.args, 'sample_every_n_frames') and self.args.sample_every_n_frames>1:
                 # HACK flexible video diffusion data sets are in our folder
-                Dataset = TensorDataset if self.args.data_path.find(video_diffusion_path) > 0 else VideoDataset if osp.isdir(self.args.data_path) else HDF5Dataset
+                Dataset = TensorDataset if is_video_diffusion_data_path(self.args.data_path) else VideoDataset if osp.isdir(self.args.data_path) else HDF5Dataset
                 dataset = Dataset(self.args.data_path, self.args.sequence_length,
                                   train=train, resolution=self.args.resolution, sample_every_n_frames=self.args.sample_every_n_frames)
             else:
-                Dataset = TensorDataset if self.args.data_path.find(video_diffusion_path) > 0 else VideoDataset if osp.isdir(self.args.data_path) else HDF5Dataset
+                Dataset = TensorDataset if is_video_diffusion_data_path(self.args.data_path) else VideoDataset if osp.isdir(self.args.data_path) else HDF5Dataset
                 dataset = Dataset(self.args.data_path, self.args.sequence_length,
                                   train=train, resolution=self.args.resolution)
         return dataset
