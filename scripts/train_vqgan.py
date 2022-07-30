@@ -40,10 +40,6 @@ def main():
     callbacks.append(VideoLogger(batch_frequency=1500, max_videos=4, clamp=True))
 
     kwargs = dict()
-    if args.gpus > 1:
-        kwargs = dict(strategy='ddp', accelerator='gpu', devices=args.gpus)
-        # kwargs = dict(distributed_backend='ddp', gpus=args.gpus)
-
     # load the most recent checkpoint file
     base_dir = os.path.join(args.default_root_dir, 'lightning_logs')
     if args.gpus > 1:
