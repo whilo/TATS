@@ -26,7 +26,7 @@ export OMP_NUM_THREADS=1
 export WORLD_SIZE=8
 
 # source ../virtual_env/bin/activate
-source /home/vadmas/scratch/diffusion/TATS/TATS-env/bin/activate
+source /home/whilo/scratch/TATS/TATS/bin/activate
 
 # reserve hostname as the main interactive node
 nodes_list=(`scontrol show hostname $SLURM_NODELIST`)
@@ -58,7 +58,7 @@ echo "Master node: ${master_node}"
 echo "Gpus per node: ${num_gpus_per_node}"
 
 # For the difference between different backends see
-# https://pytorch.org/docs/stable/distributed.html?highlight=init_process_group#torch.distributed.init_process_group
+# https:/pytorch.org/docs/stable/distributed.html?highlight=init_process_group#torch.distributed.init_process_group
 
 #################### NCCL ####################
 
@@ -76,11 +76,11 @@ export PL_TORCH_DISTRIBUTED_BACKEND=nccl
 echo "Running the following command: "
 echo "srun -w"${valid_nodes}" -N${num_valid_nodes} -n${WORLD_SIZE} \
     -c${SLURM_CPUS_PER_TASK} -o ./output/demo_gloo_lightning_output.out -D"$(dirname "$(pwd)")" \
-    python /home/vadmas/scratch/diffusion/TATS/train_vqgan.py --embedding_dim 256 --n_codes 16384 --n_hiddens 32 --downsample 4 8 8 --no_random_restart \
+    python /home/whilo/scratch/TATS/train_vqgan.py --embedding_dim 256 --n_codes 16384 --n_hiddens 32 --downsample 4 8 8 --no_random_restart \
                       --gpus=${num_gpus_per_node} --nnodes=${num_valid_nodes} --sync_batchnorm --batch_size 2 \
                       --num_workers 32 --accumulate_grad_batches 6 \
                       --progress_bar_refresh_rate 500 --max_steps 2000 --gradient_clip_val 1.0 --lr 3e-5 \
-                      --data_path /home/vadmas/scratch/diffusion/TATS/data/sky_timelapse_small  --image_folder --default_root_dir /home/vadmas/scratch/diffusion/TATS/checkpoints \
+                      --data_path /home/whilo/scratch/TATS/data/sky_timelapse_small  --image_folder --default_root_dir /home/whilo/scratch/TATS/checkpoints \
                       --resolution 128 --sequence_length 16 --discriminator_iter_start 10000 --norm_type batch \
                       --perceptual_weight 4 --image_gan_weight 1 --video_gan_weight 1  --gan_feat_weight 4
 "
@@ -88,10 +88,10 @@ echo "srun -w"${valid_nodes}" -N${num_valid_nodes} -n${WORLD_SIZE} \
 
 srun -w"${valid_nodes}" -N${num_valid_nodes} -n${WORLD_SIZE} \
     -c${SLURM_CPUS_PER_TASK} -o ./output/demo_gloo_lightning_output.out -D"$(dirname "$(pwd)")" \
-    python /home/vadmas/scratch/diffusion/TATS/train_vqgan.py --embedding_dim 256 --n_codes 16384 --n_hiddens 32 --downsample 4 8 8 --no_random_restart \
+    python /home/whilo/scratch/TATS/train_vqgan.py --embedding_dim 256 --n_codes 16384 --n_hiddens 32 --downsample 4 8 8 --no_random_restart \
                       --gpus=${num_gpus_per_node} --nnodes=${num_valid_nodes} --sync_batchnorm --batch_size 2 \
                       --num_workers 32 --accumulate_grad_batches 6 \
                       --progress_bar_refresh_rate 500 --max_steps 2000 --gradient_clip_val 1.0 --lr 3e-5 \
-                      --data_path /home/vadmas/scratch/diffusion/TATS/data/sky_timelapse_small  --image_folder --default_root_dir /home/vadmas/scratch/diffusion/TATS/checkpoints \
+                      --data_path /home/whilo/scratch/TATS/data/sky_timelapse_small  --image_folder --default_root_dir /home/whilo/scratch/TATS/checkpoints \
                       --resolution 128 --sequence_length 16 --discriminator_iter_start 10000 --norm_type batch \
                       --perceptual_weight 4 --image_gan_weight 1 --video_gan_weight 1  --gan_feat_weight 4
