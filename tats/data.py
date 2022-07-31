@@ -122,7 +122,7 @@ class TensorDataset(data.Dataset):
         self.sample_every_n_frames = sample_every_n_frames
 
         folder = osp.join(data_folder, 'train' if train else 'test')
-        self.files = sum([glob.glob(osp.join(self.folder, '**', f'*.{ext}'), recursive=True)
+        self.files = sum([glob.glob(osp.join(folder, '**', f'*.{ext}'), recursive=True)
                         for ext in self.exts], [])
 
         # hacky way to compute # of classes (count # of unique parent directories)
