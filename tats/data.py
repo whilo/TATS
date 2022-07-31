@@ -151,7 +151,7 @@ class TensorDataset(data.Dataset):
         return len(self.files)
 
     def __getitem__(self, idx):
-        path = self.cache_file(files[idx])
+        path = self.cache_file(self.files[idx])
 
         if self.path.endswith(".pt"):
             video = torch.load(path)
