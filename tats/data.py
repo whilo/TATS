@@ -6,6 +6,9 @@ import math
 import random
 import pickle
 import warnings
+from filelock import FileLock
+from pathlib import Path
+import shutil
 
 import glob
 import h5py
@@ -86,10 +89,6 @@ class VideoDataset(data.Dataset):
         class_name = get_parent_dir(self._clips.video_paths[idx])
         label = self.class_to_label[class_name]
         return dict(**preprocess(video, resolution, sample_every_n_frames=self.sample_every_n_frames), label=label)
-
-# TODO move into utils
-from filelock import FileLock
-from pathlib import Path
 
 class Protect(FileLock):
     """ Given a file path, this class will create a lock file and prevent race conditions
