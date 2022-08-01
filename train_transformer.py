@@ -11,6 +11,7 @@ def main():
     pl.seed_everything(1234)
 
     parser = argparse.ArgumentParser()
+    parser.add_argument('--nnodes', type=int, default=1, help='Number of nodes to use')
     parser = pl.Trainer.add_argparse_args(parser)
     parser = Net2NetTransformer.add_model_specific_args(parser)
     parser = VideoData.add_data_specific_args(parser)
@@ -32,9 +33,16 @@ def main():
     kwargs = dict()
     if args.gpus > 1:
         # find_unused_parameters = False to support gradient checkpointing
-        kwargs = dict(gpus=args.gpus,
-                      # plugins=["deepspeed_stage_2"])
-                      plugins=[pl.plugins.DDPPlugin(find_unused_parameters=False)])
+        # kwargs = dict(gpus=args.gpus,
+        #               # plugins=["deepspeed_stage_2"])
+        #               plugins=[pl.plugins.DDPPlugin(find_unused_parameters=False)])
+        kwargs = dict(strategy='ddp',
+                      accelerator='gpu',
+                      gpus=args.gpus,
+                      num_nodes=args.nnodes,
+                    #   devices=args.gpus,
+                      plugins=[pl.plugins.DDPPlugin(find_unused_parameters=False)]
+                      )
 
     # configure learning rate
     bs, base_lr = args.batch_size, args.base_lr
