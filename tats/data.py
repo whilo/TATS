@@ -152,10 +152,15 @@ class TensorDataset(data.Dataset):
     def __getitem__(self, idx):
         path = self.cache_file(self.files[idx])
 
-        if path.endswith(".pt"):
-            video = torch.load(path)
-        else:
-            video = torch.from_numpy(np.load(path))
+        try:
+            if path.endswith(".pt"):
+                video = torch.load(path)
+            else:
+                video = torch.from_numpy(np.load(path))
+        except Exception as e:
+            print(f"Failed on loading {path}")
+            raise e
+
         assert video.dtype == torch.uint8
         T, W, H, C = video.shape # self.resolution
         assert W == H
