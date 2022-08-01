@@ -1,423 +1,0 @@
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-Multi-processing is handled by Slurm.
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/callback_connector.py:90: LightningDeprecationWarning: Setting `Trainer(progress_bar_refresh_rate=500)` is deprecated in v1.5 and will be removed in v1.7. Please pass `pytorch_lightning.callbacks.progress.TQDMProgressBar` with `refresh_rate` directly to the Trainer's `callbacks` argument instead. Or, to disable the progress bar pass `enable_progress_bar = False` to the Trainer.
-  rank_zero_deprecation(
-GPU available: True, used: True
-TPU available: False, using: 0 TPU cores
-IPU available: False, using: 0 IPUs
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/pytorch_lightning/trainer/configuration_validator.py:287: LightningDeprecationWarning: Base `Callback.on_train_batch_end` hook signature has changed in v1.5. The `dataloader_idx` argument will be removed in v1.7.
-  rank_zero_deprecation(
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-initializing distributed: GLOBAL_RANK: 2, MEMBER: 3/8
-initializing distributed: GLOBAL_RANK: 3, MEMBER: 4/8
-initializing distributed: GLOBAL_RANK: 1, MEMBER: 2/8
-initializing distributed: GLOBAL_RANK: 4, MEMBER: 5/8
-initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/8
-initializing distributed: GLOBAL_RANK: 6, MEMBER: 7/8
-initializing distributed: GLOBAL_RANK: 7, MEMBER: 8/8
-initializing distributed: GLOBAL_RANK: 5, MEMBER: 6/8
-----------------------------------------------------------------------------------------------------
-distributed_backend=nccl
-All distributed processes registered. Starting with 8 processes
-----------------------------------------------------------------------------------------------------
-
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
-LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
-LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
-LOCAL_RANK: 1 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
-LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
-LOCAL_RANK: 2 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
-LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
-LOCAL_RANK: 3 - CUDA_VISIBLE_DEVICES: [0,1,2,3]
-Set SLURM handle signals.
-Set SLURM handle signals.
-
-  | Name                | Type                  | Params
---------------------------------------------------------------
-0 | encoder             | Encoder               | 7.4 M 
-1 | decoder             | Decoder               | 16.1 M
-2 | pre_vq_conv         | SamePadConv3d         | 65.8 K
-3 | post_vq_conv        | SamePadConv3d         | 65.8 K
-4 | codebook            | Codebook              | 0     
-5 | image_discriminator | NLayerDiscriminator   | 2.8 M 
-6 | video_discriminator | NLayerDiscriminator3D | 11.1 M
-7 | perceptual_model    | LPIPS                 | 14.7 M
---------------------------------------------------------------
-37.5 M    Trainable params
-14.7 M    Non-trainable params
-52.2 M    Total params
-208.771   Total estimated model params size (MB)
-Set SLURM handle signals.
-Set SLURM handle signals.
-Set SLURM handle signals.
-Set SLURM handle signals.
-Set SLURM handle signals.
-Set SLURM handle signals.
-Setting learning rate to 4.50e-05 = 6 (accumulate_grad_batches) * 0.5 (num_gpus/8) * 0.5 (batchsize/4) * 3.00e-05 (base_lr)
-loaded pretrained LPIPS loss from /lustre07/scratch/vadmas/diffusion/TATS/tats/modules/cache/vgg.pth
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/pytorch_lightning/trainer/data_loading.py:453: UserWarning: Your `val_dataloader` has `shuffle=True`,it is strongly recommended that you turn this off for val/test/predict dataloaders.
-  rank_zero_warn(
-Setting learning rate to 4.50e-05 = 6 (accumulate_grad_batches) * 0.5 (num_gpus/8) * 0.5 (batchsize/4) * 3.00e-05 (base_lr)
-loaded pretrained LPIPS loss from /lustre07/scratch/vadmas/diffusion/TATS/tats/modules/cache/vgg.pth
-Setting learning rate to 4.50e-05 = 6 (accumulate_grad_batches) * 0.5 (num_gpus/8) * 0.5 (batchsize/4) * 3.00e-05 (base_lr)
-loaded pretrained LPIPS loss from /lustre07/scratch/vadmas/diffusion/TATS/tats/modules/cache/vgg.pth
-Setting learning rate to 4.50e-05 = 6 (accumulate_grad_batches) * 0.5 (num_gpus/8) * 0.5 (batchsize/4) * 3.00e-05 (base_lr)
-loaded pretrained LPIPS loss from /lustre07/scratch/vadmas/diffusion/TATS/tats/modules/cache/vgg.pth
-Setting learning rate to 4.50e-05 = 6 (accumulate_grad_batches) * 0.5 (num_gpus/8) * 0.5 (batchsize/4) * 3.00e-05 (base_lr)
-loaded pretrained LPIPS loss from /lustre07/scratch/vadmas/diffusion/TATS/tats/modules/cache/vgg.pth
-Setting learning rate to 4.50e-05 = 6 (accumulate_grad_batches) * 0.5 (num_gpus/8) * 0.5 (batchsize/4) * 3.00e-05 (base_lr)
-loaded pretrained LPIPS loss from /lustre07/scratch/vadmas/diffusion/TATS/tats/modules/cache/vgg.pth
-Setting learning rate to 4.50e-05 = 6 (accumulate_grad_batches) * 0.5 (num_gpus/8) * 0.5 (batchsize/4) * 3.00e-05 (base_lr)
-loaded pretrained LPIPS loss from /lustre07/scratch/vadmas/diffusion/TATS/tats/modules/cache/vgg.pth
-Setting learning rate to 4.50e-05 = 6 (accumulate_grad_batches) * 0.5 (num_gpus/8) * 0.5 (batchsize/4) * 3.00e-05 (base_lr)
-loaded pretrained LPIPS loss from /lustre07/scratch/vadmas/diffusion/TATS/tats/modules/cache/vgg.pth
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x5614a1032640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x555d8ae9b6b0] Warning: data is not aligned! This can lead to a speed loss
-Validation sanity check: 0it [00:00, ?it/s]Validation sanity check:   0%|          | 0/2 [00:00<?, ?it/s]/home/vadmas/scratch/diffusion/TATS/checkpoints/images/val
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/inputs_gs-000000_e-000000_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/reconstructions_gs-000000_e-000000_b-000000.mp4
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-Global seed set to 1234
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/pytorch_lightning/trainer/data_loading.py:407: UserWarning: The number of training samples (2) is smaller than the logging interval Trainer(log_every_n_steps=50). Set a lower value for log_every_n_steps if you want to see logs for the training epoch.
-  rank_zero_warn(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55a5003be640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x5579a022f6b0] Warning: data is not aligned! This can lead to a speed loss
-Validation sanity check: 100%|██████████| 2/2 [01:12<00:00, 36.13s/it]                                                                      Training: 0it [00:00, ?it/s]Training:   0%|          | 0/4 [00:00<?, ?it/s]Epoch 0:   0%|          | 0/4 [00:00<?, ?it/s] /home/vadmas/scratch/diffusion/TATS/checkpoints/images/train
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/inputs_gs-000000_e-000000_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/reconstructions_gs-000000_e-000000_b-000000.mp4
-Epoch 0: 100%|██████████| 4/4 [00:57<00:00, 14.44s/it]
-Validating: 0it [00:00, ?it/s][A
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x56277bc1e640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55ce7a37c6b0] Warning: data is not aligned! This can lead to a speed loss
-Validating:   0%|          | 0/2 [00:00<?, ?it/s][A/home/vadmas/scratch/diffusion/TATS/checkpoints/images/val
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/inputs_gs-000000_e-000000_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/reconstructions_gs-000000_e-000000_b-000000.mp4
-
-Validating: 100%|██████████| 2/2 [00:05<00:00,  2.93s/it][AEpoch 0: 100%|██████████| 4/4 [01:04<00:00, 16.11s/it, loss=2.54, v_num=8115682, train/perceptual_loss_step=3.130, train/recon_loss_step=1.120, train/aeloss_step=0.000, train/commitment_loss_step=0.0216, train/perplexity_step=46.30, train/discloss_step=0.000, val/recon_loss=0.961, val/perceptual_loss=2.430, val/perplexity=1.130, val/commitment_loss=0.00314]
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x5646a06ef640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x5636de8076b0] Warning: data is not aligned! This can lead to a speed loss
-                                                         [AEpoch 0:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.54, v_num=8115682, train/perceptual_loss_step=3.130, train/recon_loss_step=1.120, train/aeloss_step=0.000, train/commitment_loss_step=0.0216, train/perplexity_step=46.30, train/discloss_step=0.000, val/recon_loss=0.961, val/perceptual_loss=2.430, val/perplexity=1.130, val/commitment_loss=0.00314]        Epoch 1:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.54, v_num=8115682, train/perceptual_loss_step=3.130, train/recon_loss_step=1.120, train/aeloss_step=0.000, train/commitment_loss_step=0.0216, train/perplexity_step=46.30, train/discloss_step=0.000, val/recon_loss=0.961, val/perceptual_loss=2.430, val/perplexity=1.130, val/commitment_loss=0.00314]/home/vadmas/scratch/diffusion/TATS/checkpoints/images/train
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/inputs_gs-000001_e-000001_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/reconstructions_gs-000001_e-000001_b-000000.mp4
-Epoch 1: 100%|██████████| 4/4 [00:07<00:00,  1.88s/it, loss=2.54, v_num=8115682, train/perceptual_loss_step=3.130, train/recon_loss_step=1.120, train/aeloss_step=0.000, train/commitment_loss_step=0.0216, train/perplexity_step=46.30, train/discloss_step=0.000, val/recon_loss=0.961, val/perceptual_loss=2.430, val/perplexity=1.130, val/commitment_loss=0.00314]
-Validating: 0it [00:00, ?it/s][A
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x562d5c922640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x563f65a896b0] Warning: data is not aligned! This can lead to a speed loss
-Validating:   0%|          | 0/2 [00:00<?, ?it/s][A/home/vadmas/scratch/diffusion/TATS/checkpoints/images/val
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/inputs_gs-000001_e-000001_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/reconstructions_gs-000001_e-000001_b-000000.mp4
-
-Validating: 100%|██████████| 2/2 [00:06<00:00,  3.40s/it][AEpoch 1: 100%|██████████| 4/4 [00:14<00:00,  3.65s/it, loss=2.31, v_num=8115682, train/perceptual_loss_step=3.140, train/recon_loss_step=0.936, train/aeloss_step=0.000, train/commitment_loss_step=0.00798, train/perplexity_step=25.20, train/discloss_step=0.000, val/recon_loss=0.956, val/perceptual_loss=2.780, val/perplexity=1.320, val/commitment_loss=0.00238, train/perceptual_loss_epoch=3.040, train/recon_loss_epoch=1.250, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0196, train/perplexity_epoch=373.0, train/discloss_epoch=0.000]
-                                                         [AEpoch 1:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.31, v_num=8115682, train/perceptual_loss_step=3.140, train/recon_loss_step=0.936, train/aeloss_step=0.000, train/commitment_loss_step=0.00798, train/perplexity_step=25.20, train/discloss_step=0.000, val/recon_loss=0.956, val/perceptual_loss=2.780, val/perplexity=1.320, val/commitment_loss=0.00238, train/perceptual_loss_epoch=3.040, train/recon_loss_epoch=1.250, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0196, train/perplexity_epoch=373.0, train/discloss_epoch=0.000]        Epoch 2:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.31, v_num=8115682, train/perceptual_loss_step=3.140, train/recon_loss_step=0.936, train/aeloss_step=0.000, train/commitment_loss_step=0.00798, train/perplexity_step=25.20, train/discloss_step=0.000, val/recon_loss=0.956, val/perceptual_loss=2.780, val/perplexity=1.320, val/commitment_loss=0.00238, train/perceptual_loss_epoch=3.040, train/recon_loss_epoch=1.250/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x557abbc27640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55f8f3cb96b0] Warning: data is not aligned! This can lead to a speed loss
-, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0196, train/perplexity_epoch=373.0, train/discloss_epoch=0.000]/home/vadmas/scratch/diffusion/TATS/checkpoints/images/train
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/inputs_gs-000002_e-000002_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/reconstructions_gs-000002_e-000002_b-000000.mp4
-Epoch 2: 100%|██████████| 4/4 [00:07<00:00,  1.81s/it, loss=2.31, v_num=8115682, train/perceptual_loss_step=3.140, train/recon_loss_step=0.936, train/aeloss_step=0.000, train/commitment_loss_step=0.00798, train/perplexity_step=25.20, train/discloss_step=0.000, val/recon_loss=0.956, val/perceptual_loss=2.780, val/perplexity=1.320, val/commitment_loss=0.00238, train/perceptual_loss_epoch=3.040, train/recon_loss_epoch=1.250, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0196, train/perplexity_epoch=373.0, train/discloss_epoch=0.000]
-Validating: 0it [00:00, ?it/s][A
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x5603e45e4640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x558fd614f6b0] Warning: data is not aligned! This can lead to a speed loss
-Validating:   0%|          | 0/2 [00:00<?, ?it/s][A/home/vadmas/scratch/diffusion/TATS/checkpoints/images/val
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/inputs_gs-000002_e-000002_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/reconstructions_gs-000002_e-000002_b-000000.mp4
-
-Validating: 100%|██████████| 2/2 [00:04<00:00,  2.10s/it][AEpoch 2: 100%|██████████| 4/4 [00:12<00:00,  3.06s/it, loss=2.24, v_num=8115682, train/perceptual_loss_step=3.160, train/recon_loss_step=1.090, train/aeloss_step=0.000, train/commitment_loss_step=0.0131, train/perplexity_step=17.00, train/discloss_step=0.000, val/recon_loss=0.981, val/perceptual_loss=2.810, val/perplexity=1.250, val/commitment_loss=0.00184, train/perceptual_loss_epoch=3.130, train/recon_loss_epoch=1.200, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0206, train/perplexity_epoch=20.10, train/discloss_epoch=0.000] 
-                                                         [AEpoch 2:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.24, v_num=8115682, train/perceptual_loss_step=3.160, train/recon_loss_step=1.090, train/aeloss_step=0.000, train/commitment_loss_step=0.0131, train/perplexity_step=17.00, train/discloss_step=0.000, val/recon_loss=0.981, val/perceptual_loss=2.810, val/perplexity=1.250, val/commitment_loss=0.00184, train/perceptual_loss_epoch=3.130, train/recon_loss_epoch=1.200, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0206, train/perplexity_epoch=20.10, train/discloss_epoch=0.000]        Epoch 3:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.24, v_num=8115682, train/perceptual_loss_step=3.160, train/recon_loss_step=1.090, train/aeloss_step=0.000, train/commitment_loss_step=0.0131, train/perplexity_step=17.00, train/discloss_step=0.000, val/recon_loss=0.981, val/perceptual_loss=2.810, val/perplexity=1.250, val/commitment_loss=0.00184, train/perceptual_loss_epoch=3.130, train/recon_loss_epoch=1.200, /lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x556cb7163640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55c4fdbca6b0] Warning: data is not aligned! This can lead to a speed loss
-train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0206, train/perplexity_epoch=20.10, train/discloss_epoch=0.000]/home/vadmas/scratch/diffusion/TATS/checkpoints/images/train
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/inputs_gs-000003_e-000003_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/reconstructions_gs-000003_e-000003_b-000000.mp4
-Epoch 3: 100%|██████████| 4/4 [00:07<00:00,  1.93s/it, loss=2.24, v_num=8115682, train/perceptual_loss_step=3.160, train/recon_loss_step=1.090, train/aeloss_step=0.000, train/commitment_loss_step=0.0131, train/perplexity_step=17.00, train/discloss_step=0.000, val/recon_loss=0.981, val/perceptual_loss=2.810, val/perplexity=1.250, val/commitment_loss=0.00184, train/perceptual_loss_epoch=3.130, train/recon_loss_epoch=1.200, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0206, train/perplexity_epoch=20.10, train/discloss_epoch=0.000]
-Validating: 0it [00:00, ?it/s][A
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x559fd7ab6640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x563330e066b0] Warning: data is not aligned! This can lead to a speed loss
-Validating:   0%|          | 0/2 [00:00<?, ?it/s][A/home/vadmas/scratch/diffusion/TATS/checkpoints/images/val
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/inputs_gs-000003_e-000003_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/reconstructions_gs-000003_e-000003_b-000000.mp4
-
-Validating: 100%|██████████| 2/2 [00:04<00:00,  2.34s/it][AEpoch 3: 100%|██████████| 4/4 [00:12<00:00,  3.14s/it, loss=2.18, v_num=8115682, train/perceptual_loss_step=2.870, train/recon_loss_step=1.100, train/aeloss_step=0.000, train/commitment_loss_step=0.00768, train/perplexity_step=6.870, train/discloss_step=0.000, val/recon_loss=0.952, val/perceptual_loss=2.700, val/perplexity=1.230, val/commitment_loss=0.00152, train/perceptual_loss_epoch=3.060, train/recon_loss_epoch=1.100, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0199, train/perplexity_epoch=18.70, train/discloss_epoch=0.000]
-                                                         [AEpoch 3:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.18, v_num=8115682, train/perceptual_loss_step=2.870, train/recon_loss_step=1.100, train/aeloss_step=0.000, train/commitment_loss_step=0.00768, train/perplexity_step=6.870, train/discloss_step=0.000, val/recon_loss=0.952, val/perceptual_loss=2.700, val/perplexity=1.230, val/commitment_loss=0.00152, train/perceptual_loss_epoch=3.060, train/recon_loss_epoch=1.100, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0199, train/perplexity_epoch=18.70, train/discloss_epoch=0.000]        Epoch 4:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.18, v_num=8115682, train/perceptual_loss_step=2.870, train/recon_loss_step=1.100, train/aeloss_step=0.000, train/commitment_loss_step=0.00768, train/perplexity_step=6.870, train/discloss_step=0.000, val/recon_loss=0.952, val/perceptual_loss=2.700, val/perplexity=1.230, val/commitment_loss=0.00152, train/perceptual_loss_epoch=3.060, train/recon_loss_epoch=1.100/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x558508cd4640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55c6dba276b0] Warning: data is not aligned! This can lead to a speed loss
-, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0199, train/perplexity_epoch=18.70, train/discloss_epoch=0.000]/home/vadmas/scratch/diffusion/TATS/checkpoints/images/train
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/inputs_gs-000004_e-000004_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/reconstructions_gs-000004_e-000004_b-000000.mp4
-Epoch 4: 100%|██████████| 4/4 [00:07<00:00,  1.85s/it, loss=2.18, v_num=8115682, train/perceptual_loss_step=2.870, train/recon_loss_step=1.100, train/aeloss_step=0.000, train/commitment_loss_step=0.00768, train/perplexity_step=6.870, train/discloss_step=0.000, val/recon_loss=0.952, val/perceptual_loss=2.700, val/perplexity=1.230, val/commitment_loss=0.00152, train/perceptual_loss_epoch=3.060, train/recon_loss_epoch=1.100, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0199, train/perplexity_epoch=18.70, train/discloss_epoch=0.000]
-Validating: 0it [00:00, ?it/s][A
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55f4e376e640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x56552eac16b0] Warning: data is not aligned! This can lead to a speed loss
-Validating:   0%|          | 0/2 [00:00<?, ?it/s][A/home/vadmas/scratch/diffusion/TATS/checkpoints/images/val
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/inputs_gs-000004_e-000004_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/reconstructions_gs-000004_e-000004_b-000000.mp4
-
-Validating: 100%|██████████| 2/2 [00:05<00:00,  2.88s/it][AEpoch 4: 100%|██████████| 4/4 [00:13<00:00,  3.33s/it, loss=2.14, v_num=8115682, train/perceptual_loss_step=2.810, train/recon_loss_step=1.010, train/aeloss_step=0.000, train/commitment_loss_step=0.0167, train/perplexity_step=9.570, train/discloss_step=0.000, val/recon_loss=0.963, val/perceptual_loss=2.810, val/perplexity=1.340, val/commitment_loss=0.0017, train/perceptual_loss_epoch=2.950, train/recon_loss_epoch=1.090, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0187, train/perplexity_epoch=16.20, train/discloss_epoch=0.000]  
-                                                         [AEpoch 4:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.14, v_num=8115682, train/perceptual_loss_step=2.810, train/recon_loss_step=1.010, train/aeloss_step=0.000, train/commitment_loss_step=0.0167, train/perplexity_step=9.570, train/discloss_step=0.000, val/recon_loss=0.963, val/perceptual_loss=2.810, val/perplexity=1.340, val/commitment_loss=0.0017, train/perceptual_loss_epoch=2.950, train/recon_loss_epoch=1.090, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0187, train/perplexity_epoch=16.20, train/discloss_epoch=0.000]        Epoch 5:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.14, v_num=8115682, train/perceptual_loss_step=2.810, train/recon_loss_step=1.010, train/aeloss_step=0.000, train/commitment_loss_step=0.0167, train/perplexity_step=9.570, train/discloss_step=0.000, val/recon_loss=0.963, val/perceptual_loss=2.810, val/perplexity=1.340, val/commitment_loss=0.0017, train/perceptual_loss_epoch=2.950, train/recon_loss_epoch=1.090, tr/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55e1de042640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55edacd226b0] Warning: data is not aligned! This can lead to a speed loss
-ain/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0187, train/perplexity_epoch=16.20, train/discloss_epoch=0.000]/home/vadmas/scratch/diffusion/TATS/checkpoints/images/train
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/inputs_gs-000005_e-000005_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/reconstructions_gs-000005_e-000005_b-000000.mp4
-Epoch 5: 100%|██████████| 4/4 [00:09<00:00,  2.31s/it, loss=2.14, v_num=8115682, train/perceptual_loss_step=2.810, train/recon_loss_step=1.010, train/aeloss_step=0.000, train/commitment_loss_step=0.0167, train/perplexity_step=9.570, train/discloss_step=0.000, val/recon_loss=0.963, val/perceptual_loss=2.810, val/perplexity=1.340, val/commitment_loss=0.0017, train/perceptual_loss_epoch=2.950, train/recon_loss_epoch=1.090, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0187, train/perplexity_epoch=16.20, train/discloss_epoch=0.000]
-Validating: 0it [00:00, ?it/s][A
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55e45d387640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x558d9f5916b0] Warning: data is not aligned! This can lead to a speed loss
-Validating:   0%|          | 0/2 [00:00<?, ?it/s][A/home/vadmas/scratch/diffusion/TATS/checkpoints/images/val
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/inputs_gs-000005_e-000005_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/reconstructions_gs-000005_e-000005_b-000000.mp4
-
-Validating: 100%|██████████| 2/2 [00:04<00:00,  2.50s/it][AEpoch 5: 100%|██████████| 4/4 [00:15<00:00,  3.85s/it, loss=2.03, v_num=8115682, train/perceptual_loss_step=2.860, train/recon_loss_step=1.170, train/aeloss_step=0.000, train/commitment_loss_step=0.0148, train/perplexity_step=18.00, train/discloss_step=0.000, val/recon_loss=0.937, val/perceptual_loss=2.670, val/perplexity=2.590, val/commitment_loss=0.00174, train/perceptual_loss_epoch=2.820, train/recon_loss_epoch=1.030, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0182, train/perplexity_epoch=16.40, train/discloss_epoch=0.000]
-                                                         [AEpoch 5:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.03, v_num=8115682, train/perceptual_loss_step=2.860, train/recon_loss_step=1.170, train/aeloss_step=0.000, train/commitment_loss_step=0.0148, train/perplexity_step=18.00, train/discloss_step=0.000, val/recon_loss=0.937, val/perceptual_loss=2.670, val/perplexity=2.590, val/commitment_loss=0.00174, train/perceptual_loss_epoch=2.820, train/recon_loss_epoch=1.030, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0182, train/perplexity_epoch=16.40, train/discloss_epoch=0.000]        Epoch 6:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.03, v_num=8115682, train/perceptual_loss_step=2.860, train/recon_loss_step=1.170, train/aeloss_step=0.000, train/commitment_loss_step=0.0148, train/perplexity_step=18.00, train/discloss_step=0.000, val/recon_loss=0.937, val/perceptual_loss=2.670, val/perplexity=2.590, val/commitment_loss=0.00174, train/perceptual_loss_epoch=2.820, train/recon_loss_epoch=1.030, /lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x560b8e055640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55f3423296b0] Warning: data is not aligned! This can lead to a speed loss
-train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0182, train/perplexity_epoch=16.40, train/discloss_epoch=0.000]/home/vadmas/scratch/diffusion/TATS/checkpoints/images/train
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/inputs_gs-000006_e-000006_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/reconstructions_gs-000006_e-000006_b-000000.mp4
-Epoch 6: 100%|██████████| 4/4 [00:06<00:00,  1.71s/it, loss=2.03, v_num=8115682, train/perceptual_loss_step=2.860, train/recon_loss_step=1.170, train/aeloss_step=0.000, train/commitment_loss_step=0.0148, train/perplexity_step=18.00, train/discloss_step=0.000, val/recon_loss=0.937, val/perceptual_loss=2.670, val/perplexity=2.590, val/commitment_loss=0.00174, train/perceptual_loss_epoch=2.820, train/recon_loss_epoch=1.030, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0182, train/perplexity_epoch=16.40, train/discloss_epoch=0.000]
-Validating: 0it [00:00, ?it/s][A
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55fffc704640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x556aed3dc6b0] Warning: data is not aligned! This can lead to a speed loss
-Validating:   0%|          | 0/2 [00:00<?, ?it/s][A/home/vadmas/scratch/diffusion/TATS/checkpoints/images/val
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/inputs_gs-000006_e-000006_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/reconstructions_gs-000006_e-000006_b-000000.mp4
-
-Validating: 100%|██████████| 2/2 [00:04<00:00,  2.36s/it][AEpoch 6: 100%|██████████| 4/4 [00:11<00:00,  2.94s/it, loss=2.01, v_num=8115682, train/perceptual_loss_step=2.720, train/recon_loss_step=1.110, train/aeloss_step=0.000, train/commitment_loss_step=0.0167, train/perplexity_step=14.20, train/discloss_step=0.000, val/recon_loss=0.934, val/perceptual_loss=2.640, val/perplexity=2.680, val/commitment_loss=0.00161, train/perceptual_loss_epoch=2.820, train/recon_loss_epoch=1.010, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0165, train/perplexity_epoch=16.30, train/discloss_epoch=0.000]
-                                                         [AEpoch 6:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.01, v_num=8115682, train/perceptual_loss_step=2.720, train/recon_loss_step=1.110, train/aeloss_step=0.000, train/commitment_loss_step=0.0167, train/perplexity_step=14.20, train/discloss_step=0.000, val/recon_loss=0.934, val/perceptual_loss=2.640, val/perplexity=2.680, val/commitment_loss=0.00161, train/perceptual_loss_epoch=2.820, train/recon_loss_epoch=1.010, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0165, train/perplexity_epoch=16.30, train/discloss_epoch=0.000]        Epoch 7:   0%|          | 0/4 [00:00<?, ?it/s, loss=2.01, v_num=8115682, train/perceptual_loss_step=2.720, train/recon_loss_step=1.110, train/aeloss_step=0.000, train/commitment_loss_step=0.0167, train/perplexity_step=14.20, train/discloss_step=0.000, val/recon_loss=0.934, val/perceptual_loss=2.640, val/perplexity=2.680, val/commitment_loss=0.00161, train/perceptual_loss_epoch=2.820, train/recon_loss_epoch=1.010, /lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x558975c8c640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55630a0366b0] Warning: data is not aligned! This can lead to a speed loss
-train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0165, train/perplexity_epoch=16.30, train/discloss_epoch=0.000]/home/vadmas/scratch/diffusion/TATS/checkpoints/images/train
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/inputs_gs-000007_e-000007_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/reconstructions_gs-000007_e-000007_b-000000.mp4
-Epoch 7: 100%|██████████| 4/4 [00:07<00:00,  1.79s/it, loss=2.01, v_num=8115682, train/perceptual_loss_step=2.720, train/recon_loss_step=1.110, train/aeloss_step=0.000, train/commitment_loss_step=0.0167, train/perplexity_step=14.20, train/discloss_step=0.000, val/recon_loss=0.934, val/perceptual_loss=2.640, val/perplexity=2.680, val/commitment_loss=0.00161, train/perceptual_loss_epoch=2.820, train/recon_loss_epoch=1.010, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0165, train/perplexity_epoch=16.30, train/discloss_epoch=0.000]
-Validating: 0it [00:00, ?it/s][A
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55dc304f4640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55c915b126b0] Warning: data is not aligned! This can lead to a speed loss
-Validating:   0%|          | 0/2 [00:00<?, ?it/s][A/home/vadmas/scratch/diffusion/TATS/checkpoints/images/val
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/inputs_gs-000007_e-000007_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/reconstructions_gs-000007_e-000007_b-000000.mp4
-
-Validating: 100%|██████████| 2/2 [00:03<00:00,  1.95s/it][AEpoch 7: 100%|██████████| 4/4 [00:11<00:00,  2.80s/it, loss=1.96, v_num=8115682, train/perceptual_loss_step=2.680, train/recon_loss_step=0.680, train/aeloss_step=0.000, train/commitment_loss_step=0.00413, train/perplexity_step=9.880, train/discloss_step=0.000, val/recon_loss=0.876, val/perceptual_loss=2.750, val/perplexity=3.300, val/commitment_loss=0.00189, train/perceptual_loss_epoch=2.740, train/recon_loss_epoch=0.988, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0154, train/perplexity_epoch=14.30, train/discloss_epoch=0.000]
-                                                         [AEpoch 7:   0%|          | 0/4 [00:00<?, ?it/s, loss=1.96, v_num=8115682, train/perceptual_loss_step=2.680, train/recon_loss_step=0.680, train/aeloss_step=0.000, train/commitment_loss_step=0.00413, train/perplexity_step=9.880, train/discloss_step=0.000, val/recon_loss=0.876, val/perceptual_loss=2.750, val/perplexity=3.300, val/commitment_loss=0.00189, train/perceptual_loss_epoch=2.740, train/recon_loss_epoch=0.988, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0154, train/perplexity_epoch=14.30, train/discloss_epoch=0.000]        Epoch 8:   0%|          | 0/4 [00:00<?, ?it/s, loss=1.96, v_num=8115682, train/perceptual_loss_step=2.680, train/recon_loss_step=0.680, train/aeloss_step=0.000, train/commitment_loss_step=0.00413, train/perplexity_step=9.880, train/discloss_step=0.000, val/recon_loss=0.876, val/perceptual_loss=2.750, val/perplexity=3.300, val/commitment_loss=0.00189, train/perceptual_loss_epoch=2.740, train/recon_loss_epoch=0.988/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55a71cf77640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x563d265d36b0] Warning: data is not aligned! This can lead to a speed loss
-, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0154, train/perplexity_epoch=14.30, train/discloss_epoch=0.000]/home/vadmas/scratch/diffusion/TATS/checkpoints/images/train
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/inputs_gs-000008_e-000008_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/reconstructions_gs-000008_e-000008_b-000000.mp4
-Epoch 8: 100%|██████████| 4/4 [00:06<00:00,  1.73s/it, loss=1.96, v_num=8115682, train/perceptual_loss_step=2.680, train/recon_loss_step=0.680, train/aeloss_step=0.000, train/commitment_loss_step=0.00413, train/perplexity_step=9.880, train/discloss_step=0.000, val/recon_loss=0.876, val/perceptual_loss=2.750, val/perplexity=3.300, val/commitment_loss=0.00189, train/perceptual_loss_epoch=2.740, train/recon_loss_epoch=0.988, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0154, train/perplexity_epoch=14.30, train/discloss_epoch=0.000]
-Validating: 0it [00:00, ?it/s][A
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x5562c8587640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x56455882f6b0] Warning: data is not aligned! This can lead to a speed loss
-Validating:   0%|          | 0/2 [00:00<?, ?it/s][A/home/vadmas/scratch/diffusion/TATS/checkpoints/images/val
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/inputs_gs-000008_e-000008_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/reconstructions_gs-000008_e-000008_b-000000.mp4
-
-Validating: 100%|██████████| 2/2 [00:04<00:00,  2.00s/it][AEpoch 8: 100%|██████████| 4/4 [00:11<00:00,  2.93s/it, loss=1.91, v_num=8115682, train/perceptual_loss_step=2.800, train/recon_loss_step=0.652, train/aeloss_step=0.000, train/commitment_loss_step=0.0237, train/perplexity_step=8.930, train/discloss_step=0.000, val/recon_loss=0.814, val/perceptual_loss=2.670, val/perplexity=4.970, val/commitment_loss=0.00301, train/perceptual_loss_epoch=2.690, train/recon_loss_epoch=0.895, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0146, train/perplexity_epoch=12.10, train/discloss_epoch=0.000] 
-                                                         [AEpoch 8:   0%|          | 0/4 [00:00<?, ?it/s, loss=1.91, v_num=8115682, train/perceptual_loss_step=2.800, train/recon_loss_step=0.652, train/aeloss_step=0.000, train/commitment_loss_step=0.0237, train/perplexity_step=8.930, train/discloss_step=0.000, val/recon_loss=0.814, val/perceptual_loss=2.670, val/perplexity=4.970, val/commitment_loss=0.00301, train/perceptual_loss_epoch=2.690, train/recon_loss_epoch=0.895, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0146, train/perplexity_epoch=12.10, train/discloss_epoch=0.000]        Epoch 9:   0%|          | 0/4 [00:00<?, ?it/s, loss=1.91, v_num=8115682, train/perceptual_loss_step=2.800, train/recon_loss_step=0.652, train/aeloss_step=0.000, train/commitment_loss_step=0.0237, train/perplexity_step=8.930, train/discloss_step=0.000, val/recon_loss=0.814, val/perceptual_loss=2.670, val/perplexity=4.970, val/commitment_loss=0.00301, train/perceptual_loss_epoch=2.690, train/recon_loss_epoch=0.895, /lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55b22303c640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x564ed6e646b0] Warning: data is not aligned! This can lead to a speed loss
-train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0146, train/perplexity_epoch=12.10, train/discloss_epoch=0.000]/home/vadmas/scratch/diffusion/TATS/checkpoints/images/train
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/inputs_gs-000009_e-000009_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/reconstructions_gs-000009_e-000009_b-000000.mp4
-Epoch 9: 100%|██████████| 4/4 [00:06<00:00,  1.71s/it, loss=1.91, v_num=8115682, train/perceptual_loss_step=2.800, train/recon_loss_step=0.652, train/aeloss_step=0.000, train/commitment_loss_step=0.0237, train/perplexity_step=8.930, train/discloss_step=0.000, val/recon_loss=0.814, val/perceptual_loss=2.670, val/perplexity=4.970, val/commitment_loss=0.00301, train/perceptual_loss_epoch=2.690, train/recon_loss_epoch=0.895, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0146, train/perplexity_epoch=12.10, train/discloss_epoch=0.000]
-Validating: 0it [00:00, ?it/s][A
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x5654654d0640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x5579a4d5a6b0] Warning: data is not aligned! This can lead to a speed loss
-Validating:   0%|          | 0/2 [00:00<?, ?it/s][A/home/vadmas/scratch/diffusion/TATS/checkpoints/images/val
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/inputs_gs-000009_e-000009_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/val/reconstructions_gs-000009_e-000009_b-000000.mp4
-
-Validating: 100%|██████████| 2/2 [00:04<00:00,  2.04s/it][AEpoch 9: 100%|██████████| 4/4 [00:11<00:00,  2.77s/it, loss=1.84, v_num=8115682, train/perceptual_loss_step=2.600, train/recon_loss_step=0.758, train/aeloss_step=0.000, train/commitment_loss_step=0.0147, train/perplexity_step=12.40, train/discloss_step=0.000, val/recon_loss=0.640, val/perceptual_loss=2.670, val/perplexity=6.380, val/commitment_loss=0.00485, train/perceptual_loss_epoch=2.790, train/recon_loss_epoch=0.748, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0166, train/perplexity_epoch=13.90, train/discloss_epoch=0.000]
-                                                         [AEpoch 9:   0%|          | 0/4 [00:00<?, ?it/s, loss=1.84, v_num=8115682, train/perceptual_loss_step=2.600, train/recon_loss_step=0.758, train/aeloss_step=0.000, train/commitment_loss_step=0.0147, train/perplexity_step=12.40, train/discloss_step=0.000, val/recon_loss=0.640, val/perceptual_loss=2.670, val/perplexity=6.380, val/commitment_loss=0.00485, train/perceptual_loss_epoch=2.790, train/recon_loss_epoch=0.748, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0166, train/perplexity_epoch=13.90, train/discloss_epoch=0.000]        Epoch 10:   0%|          | 0/4 [00:00<?, ?it/s, loss=1.84, v_num=8115682, train/perceptual_loss_step=2.600, train/recon_loss_step=0.758, train/aeloss_step=0.000, train/commitment_loss_step=0.0147, train/perplexity_step=12.40, train/discloss_step=0.000, val/recon_loss=0.640, val/perceptual_loss=2.670, val/perplexity=6.380, val/commitment_loss=0.00485, train/perceptual_loss_epoch=2.790, train/recon_loss_epoch=0.748,/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55ef9b85f640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55ebc44886b0] Warning: data is not aligned! This can lead to a speed loss
- train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0166, train/perplexity_epoch=13.90, train/discloss_epoch=0.000]/home/vadmas/scratch/diffusion/TATS/checkpoints/images/train
-/home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/inputs_gs-000010_e-000010_b-000000.mp4
-(16, 259, 130, 3)
-saved videos to /home/vadmas/scratch/diffusion/TATS/checkpoints/videos/train/reconstructions_gs-000010_e-000010_b-000000.mp4
-Epoch 10: 100%|██████████| 4/4 [00:05<00:00,  1.49s/it, loss=1.84, v_num=8115682, train/perceptual_loss_step=2.600, train/recon_loss_step=0.758, train/aeloss_step=0.000, train/commitment_loss_step=0.0147, train/perplexity_step=12.40, train/discloss_step=0.000, val/recon_loss=0.640, val/perceptual_loss=2.670, val/perplexity=6.380, val/commitment_loss=0.00485, train/perceptual_loss_epoch=2.790, train/recon_loss_epoch=0.748, train/aeloss_epoch=0.000, train/commitment_loss_epoch=0.0166, train/perplexity_epoch=13.90, train/discloss_epoch=0.000]
-Validating: 0it [00:00, ?it/s][A
-/lustre07/scratch/vadmas/diffusion/TATS/TATS-env/lib/python3.10/site-packages/torch/utils/data/dataloader.py:487: UserWarning: This DataLoader will create 32 worker processes in total. Our suggested max number of worker in current system is 1, which is smaller than what this DataLoader is going to create. Please be aware that excessive worker creation might get DataLoader running slow or even freeze, lower the worker number to avoid potential slowness/freeze if necessary.
-  warnings.warn(_create_warning_msg(
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x55a4e4a60640] Warning: data is not aligned! This can lead to a speed loss
-IMAGEIO FFMPEG_WRITER WARNING: input image is not divisible by macro_block_size=16, resizing from (130, 259) to (144, 272) to ensure video compatibility with most codecs and players. To prevent resizing, make your input image divisible by the macro_block_size or set the macro_block_size to 1 (risking incompatibility).
-[swscaler @ 0x560b33c886b0] Warning: data is not aligned! This can lead to a speed loss
