@@ -159,7 +159,8 @@ class TensorDataset(data.Dataset):
                 video = torch.from_numpy(np.load(path))
         except Exception as e:
             print(f"Failed on loading {path}")
-            raise e
+            return self.__getitem__(idx+1 % self.__len__())
+            # raise e
 
         assert video.dtype == torch.uint8
         T, W, H, C = video.shape # self.resolution
