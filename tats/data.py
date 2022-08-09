@@ -176,8 +176,9 @@ class TensorDataset(data.Dataset):
         #         continue
         #     break
 
-        offset = np.random.randint(T-self.sequence_length)
-        video = video[offset:offset+self.sequence_length]
+        if self.sequence_length is not None:
+            offset = np.random.randint(T-self.sequence_length)
+            video = video[offset:offset+self.sequence_length]
 
         # class_name = get_parent_dir(self._clips.video_paths[idx])
         label = 0 # self.class_to_label[class_name]

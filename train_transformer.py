@@ -41,7 +41,7 @@ def main():
                       gpus=args.gpus,
                       num_nodes=args.nnodes,
                     #   devices=args.gpus,
-                      plugins=[pl.plugins.DDPPlugin(find_unused_parameters=False)]
+                      # plugins=[pl.plugins.DDPPlugin(find_unused_parameters=False)]
                       )
 
     # configure learning rate

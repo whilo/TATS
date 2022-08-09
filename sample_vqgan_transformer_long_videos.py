@@ -1,6 +1,10 @@
 # Copyright (c) Meta Platforms, Inc. All Rights Reserved
 
 import os
+import sys
+sys.path.append('../')
+sys.path.append('./')
+
 import tqdm
 import time
 import torch
@@ -28,9 +32,11 @@ parser.add_argument('--sample_length', type=int, default=256)
 parser.add_argument('--sample_resolution', type=int, default=16)
 parser.add_argument('--temporal_sample_pos', type=int, default=1)
 parser.add_argument('--run', type=int, default=0)
-parser.add_argument('--dataset', type=str, default='ucf101', choices=['ucf101', 'sky', 'taichi'])
+parser.add_argument('--dataset', type=str, default='ucf101')
+parser.add_argument('--data_folder', type=str)
 parser.add_argument('--class_cond', action='store_true')
 parser.add_argument('--save_videos', action='store_true')
+parser.add_argument('--test_index', type=int, default=1)
 args = parser.parse_args()
 
 gpt = load_transformer(args.gpt_ckpt, vqgan_ckpt=args.vqgan_ckpt).cuda().eval()
@@ -39,8 +45,8 @@ gpt = load_transformer(args.gpt_ckpt, vqgan_ckpt=args.vqgan_ckpt).cuda().eval()
 ### spatial sliding window
 
 if args.top_k:
-    save_dir = '%s/videos/%s_long_1024/temp_%d_%d_topp%.2f_topk%d'%(args.save, args.dataset, args.sample_length, args.temporal_sample_pos, args.top_p, args.top_k)
-    save_np = '%s/numpy_files/%s_long_1024/temp_%d_%d_topp%.2f_topk%d_run%d_eval.npy'%(args.save, args.dataset, args.sample_length, args.temporal_sample_pos, args.top_p, args.top_k, args.run)
+    save_dir = '%s/videos/%s_long_1024/temp_%d_%d_topp%.2f_topk%d_testindex_%d'%(args.save, args.dataset, args.sample_length, args.temporal_sample_pos, args.top_p, args.top_k, args.test_index)
+    save_np = '%s/numpy_files/%s_long_1024/temp_%d_%d_topp%.2f_topk%d_run%d_eval_testindex_%d.npy'%(args.save, args.dataset, args.sample_length, args.temporal_sample_pos, args.top_p, args.top_k, args.run, args.test_index)
 else:
     save_dir = '%s/videos/%s_long_1024/temp_%d_%d_toppNA_topkNA_'%(args.save, args.dataset, args.sample_length, args.temporal_sample_pos)
     save_np = '%s/numpy_files/%s_long_1024/temp_%d_%d_toppNA_topkNA_run%d_eval.npy'%(args.save, args.dataset, args.sample_length, args.temporal_sample_pos, args.run)
@@ -114,24 +120,40 @@ def sample_long(gpt, temporal_infer, spatial_infer, temporal_train, spatial_trai
     else:
         return index_sample_all
 
+from tats.data import TensorDataset
 
 @torch.no_grad()
-def sample_long_fast(gpt, temporal_infer, spatial_infer, temporal_train, spatial_train, temporal_sample_pos, batch_size, class_label, temperature=1., verbose_time=True, save_videos=False):
+def sample_long_fast(gpt, temporal_infer, spatial_infer, temporal_train, spatial_train, temporal_sample_pos, batch_size, class_label, temperature=1., verbose_time=True, save_videos=False, test_index=0, data_folder="", start_offset=36):
     steps = slice_n_code = spatial_infer**2
+    steps = 1
+    dataset = TensorDataset(data_folder, sequence_length=None, train=False)
     with torch.no_grad():
         log = dict()
         index_sample_all = torch.zeros([batch_size, temporal_infer*spatial_infer*spatial_infer]).long().cuda()
+        gpt.first_stage_model.eval()
+        for (i, j) in enumerate(range(test_index, test_index+batch_size)):
+            print("dataset dtype:", dataset[j]["video"][:start_offset].shape)
+            print("index_sample_all:", index_sample_all.shape)
+            encoded = gpt.first_stage_model.encode(dataset[j]["video"][:start_offset].transpose(0,1).cuda())
+            print("encoded shape:", encoded.shape)
+            index_sample_all[i,:start_offset] = encoded
         c_indices = repeat(torch.tensor([class_label]), '1 -> b 1', b=batch_size).to(gpt.device)  # class token
         t1 = time.time()
-        index_sample_all[:,:temporal_sample_pos*steps] = sample_with_past(c_indices, gpt.transformer, steps=temporal_sample_pos*steps,
-                                        sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
-        for t_id in range(temporal_infer-temporal_sample_pos):
-        # for t_id in tqdm.tqdm(range(temporal_infer-1)):
-            i_start = t_id*slice_n_code
-            i_end = (temporal_sample_pos+t_id)*slice_n_code
-            x_past = index_sample_all[:,i_start:i_end]
-            index_sample_all[:,i_end:i_end+steps] = sample_with_past(torch.cat([c_indices, x_past], dim=1), gpt.transformer, steps=steps,
-                                            sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
+        # index_sample_all[:,:temporal_sample_pos*steps] = sample_with_past(c_indices, gpt.transformer, steps=temporal_sample_pos*steps,
+        # index_sample_all[:,:temporal_sample_pos*steps] = sample_with_past(c_indices, gpt.transformer, steps=temporal_sample_pos*steps,
+        #                                 sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
+        # for t_id in range(temporal_infer-temporal_sample_pos):
+        # # for t_id in tqdm.tqdm(range(temporal_infer-1)):
+        #    i_start = t_id*slice_n_code
+        #    i_end = (temporal_sample_pos+t_id)*slice_n_code
+        #    x_past = index_sample_all[:,i_start:i_end]
+        #    index_sample_all[:,i_end:i_end+steps] = sample_with_past(torch.cat([c_indices, x_past], dim=1), gpt.transformer, steps=steps,
+        #                                    sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
+        for start_frame in range(36, temporal_infer, 1):
+            end_frame = start_frame + 1
+            x_past = index_sample_all[:, start_frame-15:start_frame]
+            index_sample_all[:, start_frame:end_frame] = sample_with_past(torch.cat([c_indices, x_past], dim=1), gpt.transformer, steps=steps, sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
+
         torch.cuda.empty_cache()
         index_sample_all = index_sample_all.reshape([batch_size, temporal_infer, spatial_infer, spatial_infer])
         index_sample_all = torch.clamp(index_sample_all-gpt.cond_stage_vocab_size, min=0, max=gpt.first_stage_model.n_codes-1)
@@ -167,7 +189,8 @@ else:
     n_batch = args.n_sample//args.batch_size
     with torch.no_grad():
         for sample_id in tqdm.tqdm(range(n_batch)):
-            x_sample = sample_long_fast(gpt, args.sample_length, args.sample_resolution, temporal_train, spatial_train, temporal_sample_pos=args.temporal_sample_pos, batch_size=args.batch_size, class_label=0, save_videos=args.save_videos)
+            x_sample = sample_long_fast(gpt, args.sample_length, args.sample_resolution, temporal_train, spatial_train, temporal_sample_pos=args.temporal_sample_pos, batch_size=args.batch_size, class_label=0, save_videos=args.save_videos, test_index=args.test_index,
+                                        data_folder=args.data_folder)
             if args.save_videos:
                 save_video_grid(x_sample, os.path.join(save_dir, 'generation_%d_%d.avi'%(0, sample_id+args.run*args.n_sample)), n_row)
                 for i in range(args.batch_size):
@@ -192,4 +215,3 @@ else:
     all_data_np = np.transpose(all_data_np.reshape(-1, C, T, H, W), (0, 2, 3, 4, 1))
     n_total = all_data_np.shape[0]
     np.save(save_np, (all_data_np*255).astype(np.uint8)[np.random.permutation(n_total)[:args.n_sample]])
-    
