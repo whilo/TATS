@@ -125,7 +125,7 @@ from tats.data import TensorDataset
 @torch.no_grad()
 def sample_long_fast(gpt, temporal_infer, spatial_infer, temporal_train, spatial_train, temporal_sample_pos, batch_size, class_label, temperature=1., verbose_time=True, save_videos=False, test_index=0, data_folder="", start_offset=36):
     steps = slice_n_code = spatial_infer**2
-    steps = 1
+    # steps = 1
     assert temporal_infer == 75
     assert spatial_infer == 8
     dataset = TensorDataset(data_folder, sequence_length=None, train=False)
@@ -155,7 +155,7 @@ def sample_long_fast(gpt, temporal_infer, spatial_infer, temporal_train, spatial
         #                                    sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
         for start_frame in range(36//4, temporal_infer, 1):
             end_frame = start_frame + 1
-            x_past = index_sample_all[:, start_frame-15:start_frame]
+            x_past = index_sample_all[:, max(0, start_frame-15)*spatial_infer**2:start_frame*spatial_infer**2]
             index_sample_all[:, start_frame*spatial_infer**2:end_frame*spatial_infer**2] = sample_with_past(torch.cat([c_indices, x_past], dim=1), gpt.transformer, steps=steps, sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
 
         torch.cuda.empty_cache()
