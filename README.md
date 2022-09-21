@@ -54,13 +54,13 @@ python sample_vqgan_transformer_short_videos.py \
 
 2. **Long videos:** To sample the videos with a length longer than the training length with a sliding window, use the following script.
 
-- `sample_length`: number of latent frames to be generated.
-- `temporal_sample_pos`: position of the frame that the sliding window approach generates.
+- `temporal_pix`: number of latent frames to be generated.
+- `obs_frames`: position of the frame that the sliding window approach generates.
 
 ```
 python sample_vqgan_transformer_long_videos.py \
     --gpt_ckpt {GPT-CKPT} --vqgan_ckpt {VQGAN-CKPT} \
-    --dataset ucf101 --class_cond --sample_length 16 --temporal_sample_pos 1 --batch_size 5 --n_sample 5 --save_videos
+    --dataset ucf101 --class_cond --temporal_pix 16 --obs_frames 1 --batch_size 5 --n_sample 5 --save_videos
 ```
 
 3. **Text to video:** To sample MUGEN videos conditioned on the text, check this [colab notebook](https://colab.research.google.com/drive/1yblr4IolH91ZA61FfZyk2n8rvndCIFmm?usp=sharing) for an example!
