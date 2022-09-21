@@ -126,7 +126,8 @@ from tats.data import TensorDataset
 def sample_long_fast(gpt, temporal_infer, spatial_infer, temporal_train, spatial_train, temporal_sample_pos, batch_size, class_label, temperature=1., verbose_time=True, save_videos=False, test_index=0, data_folder="", start_offset=36):
     """
     gpt: model
-    temporal_infer:
+    temporal_infer: temporal resolution in latent space (resolution in pixel space divided by 4)
+    spatial_infer: spatial resolution in latent space (resolution in pixel space divided by 8)
     """
     steps = slice_n_code = spatial_infer**2
     dataset = TensorDataset(data_folder, sequence_length=None, train=False)
