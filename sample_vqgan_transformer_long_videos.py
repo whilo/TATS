@@ -28,8 +28,8 @@ parser.add_argument('--save', type=str, default='./results')
 parser.add_argument('--top_k', type=int, default=2048)
 parser.add_argument('--top_p', type=float, default=0.92)
 parser.add_argument('--n_sample', type=int, default=100)
-parser.add_argument('--sample_length', type=int, default=75)
-parser.add_argument('--sample_resolution', type=int, default=8)  # 16)
+parser.add_argument('--sample_length', type=int, default=256)
+parser.add_argument('--sample_resolution', type=int, default=16)
 parser.add_argument('--temporal_sample_pos', type=int, default=1)
 parser.add_argument('--run', type=int, default=0)
 parser.add_argument('--dataset', type=str, default='ucf101')
@@ -124,10 +124,11 @@ from tats.data import TensorDataset
 
 @torch.no_grad()
 def sample_long_fast(gpt, temporal_infer, spatial_infer, temporal_train, spatial_train, temporal_sample_pos, batch_size, class_label, temperature=1., verbose_time=True, save_videos=False, test_index=0, data_folder="", start_offset=36):
+    """
+    gpt: model
+    temporal_infer:
+    """
     steps = slice_n_code = spatial_infer**2
-    # steps = 1
-    assert temporal_infer == 75
-    assert spatial_infer == 8
     dataset = TensorDataset(data_folder, sequence_length=None, train=False)
     with torch.no_grad():
         log = dict()
@@ -136,11 +137,10 @@ def sample_long_fast(gpt, temporal_infer, spatial_infer, temporal_train, spatial
         for (i, j) in enumerate(range(test_index, test_index+batch_size)):
             print("dataset dtype:", dataset[j]["video"][:start_offset].shape)
             print("index_sample_all:", index_sample_all.shape)
-            print(dataset[j]["video"].shape)
-            encoded = gpt.first_stage_model.encode(dataset[j]["video"][:, :start_offset].unsqueeze(0).cuda())
+            encoded = gpt.first_stage_model.encode(dataset[j]["video"][:start_offset].transpose(0,1).cuda())
+            print('shapes', dataset[j]["video"][:start_offset].shape, encoded.shape)
             print("encoded shape:", encoded.shape)
-            print(start_offset, spatial_infer, start_offset*spatial_infer**2, encoded.shape, encoded.flatten().shape)
-            index_sample_all[i,:start_offset//4*spatial_infer**2] = encoded.flatten()
+            index_sample_all[i,:start_offset] = encoded
         c_indices = repeat(torch.tensor([class_label]), '1 -> b 1', b=batch_size).to(gpt.device)  # class token
         t1 = time.time()
         # index_sample_all[:,:temporal_sample_pos*steps] = sample_with_past(c_indices, gpt.transformer, steps=temporal_sample_pos*steps,
@@ -153,10 +153,10 @@ def sample_long_fast(gpt, temporal_infer, spatial_infer, temporal_train, spatial
         #    x_past = index_sample_all[:,i_start:i_end]
         #    index_sample_all[:,i_end:i_end+steps] = sample_with_past(torch.cat([c_indices, x_past], dim=1), gpt.transformer, steps=steps,
         #                                    sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
-        for start_frame in range(36//4, temporal_infer, 1):
+        for start_frame in range(36, temporal_infer, 1):
             end_frame = start_frame + 1
-            x_past = index_sample_all[:, max(0, start_frame-15)*spatial_infer**2:start_frame*spatial_infer**2]
-            index_sample_all[:, start_frame*spatial_infer**2:end_frame*spatial_infer**2] = sample_with_past(torch.cat([c_indices, x_past], dim=1), gpt.transformer, steps=steps, sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
+            x_past = index_sample_all[:, start_frame-15:start_frame]
+            index_sample_all[:, start_frame:end_frame] = sample_with_past(torch.cat([c_indices, x_past], dim=1), gpt.transformer, steps=steps, sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
 
         torch.cuda.empty_cache()
         index_sample_all = index_sample_all.reshape([batch_size, temporal_infer, spatial_infer, spatial_infer])
