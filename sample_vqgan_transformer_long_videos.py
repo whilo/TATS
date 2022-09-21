@@ -28,9 +28,9 @@ parser.add_argument('--save', type=str, default='./results')
 parser.add_argument('--top_k', type=int, default=2048)
 parser.add_argument('--top_p', type=float, default=0.92)
 parser.add_argument('--n_sample', type=int, default=100)
-parser.add_argument('--temporal_pix', type=int, default=256)
-parser.add_argument('--spatial_pix', type=int, default=16)
-parser.add_argument('--obs_frames', type=int, default=1)
+parser.add_argument('--temporal_pix', type=int, default=300)
+parser.add_argument('--spatial_pix', type=int, default=64)
+parser.add_argument('--obs_frames', type=int, default=36)
 parser.add_argument('--run', type=int, default=0)
 parser.add_argument('--dataset', type=str, default='ucf101')
 parser.add_argument('--data_folder', type=str)
@@ -145,20 +145,27 @@ def sample_long_fast(gpt, temporal_pix, spatial_pix, obs_frames, batch_size, cla
         index_sample_all = torch.zeros([batch_size, temporal_lat*spatial_lat**2]).long().cuda()
         gpt.first_stage_model.eval()
         for (i, j) in enumerate(range(test_index, test_index+batch_size)):
-            encoded = gpt.first_stage_model.encode(dataset[j]["video"][:obs_frames].transpose(0,1).cuda())
-            index_sample_all[i, :obs_lat*spatial_lat**2] = encoded
+            encoded = gpt.first_stage_model.encode(dataset[j]["video"][:, :obs_frames].unsqueeze(0).cuda())
+            index_sample_all[i, :obs_lat*spatial_lat**2] = encoded.flatten()
         c_indices = repeat(torch.tensor([class_label]), '1 -> b 1', b=batch_size).to(gpt.device)  # class token
         t1 = time.time()
 
+        print('doing transformer bit')
         for temporal_chunk in range(obs_lat, temporal_lat):
-            x_past = index_sample_all[:, :temporal_chunk*spatial_lat**2]
-            index_sample_all[:, temporal_chunk*spatial_lat**2:(temporal_chunk+1)*spatial_lat**2] = \
-                sample_with_past(torch.cat([c_indices, x_past], dim=1), gpt.transformer, steps=spatial_lat**2,
-                                 sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
+            index = temporal_chunk*spatial_lat**2
+            window_start = max(0, index-15*spatial_lat**2)   # look at previous 15 temporal slices, predict next
+            x_past = index_sample_all[:, window_start:index]
+            print('sampling with past', x_past.shape)
+            sampled = sample_with_past(torch.cat([c_indices, x_past], dim=1), gpt.transformer, steps=spatial_lat**2,
+                                       sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
+            print('assigning...')
+            index_sample_all[:, temporal_chunk*spatial_lat**2:(temporal_chunk+1)*spatial_lat**2] = sampled
 
+        print('some kind of reshape')
         torch.cuda.empty_cache()
         index_sample_all = index_sample_all.reshape([batch_size, temporal_lat, spatial_lat, spatial_lat])
         index_sample_all = torch.clamp(index_sample_all-gpt.cond_stage_vocab_size, min=0, max=gpt.first_stage_model.n_codes-1)
+    print('about to decode')
     if save_videos:
         with torch.no_grad():
             x_sample = []
