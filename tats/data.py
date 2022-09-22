@@ -123,6 +123,9 @@ class TensorDataset(data.Dataset):
         folder = osp.join(data_folder, 'train' if train else 'test')
         self.files = sum([glob.glob(osp.join(folder, '**', f'*.{ext}'), recursive=True)
                         for ext in self.exts], [])
+        if not train:
+            key = lambda path: int(Path(path).stem)
+            self.files = sorted(self.files, key=key)
 
         # hacky way to compute # of classes (count # of unique parent directories)
         self.classes = [0] # HACK list(set([get_parent_dir(f) for f in files]))
@@ -150,6 +153,7 @@ class TensorDataset(data.Dataset):
         return len(self.files)
 
     def __getitem__(self, idx):
+        print('getting video', idx, 'from', self.files[idx])
         path = self.cache_file(self.files[idx])
 
         try:

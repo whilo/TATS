@@ -168,14 +168,10 @@ def sample_long_fast(gpt, temporal_pix, spatial_pix, obs_frames, batch_size, cla
             index = temporal_chunk*spatial_lat**2
             window_start = max(0, index-3*spatial_lat**2)   # look at previous 3 temporal slices, predict next
             x_past = index_sample_all[:, window_start:index]
-            print('sampling with past', x_past.shape)
             sampled = sample_with_past(torch.cat([c_indices, x_past], dim=1), gpt.transformer, steps=spatial_lat**2,
                                        sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
-            print(sampled)
-            print('assigning...')
             index_sample_all[:, temporal_chunk*spatial_lat**2:(temporal_chunk+1)*spatial_lat**2] = sampled
 
-        print('some kind of reshape')
         torch.cuda.empty_cache()
         index_sample_all = index_sample_all.reshape([batch_size, temporal_lat, spatial_lat, spatial_lat])
         index_sample_all = torch.clamp(index_sample_all-gpt.cond_stage_vocab_size, min=0, max=gpt.first_stage_model.n_codes-1)
@@ -232,7 +228,7 @@ N, C, T, H, W = all_data_np.shape
 assert N == args.n_sample
 all_data_np = np.transpose(all_data_np.reshape(-1, C, T, H, W), (0, 2, 1, 3, 4))
 n_total = all_data_np.shape[0]
-np.save(save_np, (all_data_np*255).astype(np.uint8)[np.random.permutation(n_total)[:args.n_sample]])
+#np.save(save_np, (all_data_np*255).astype(np.uint8)[np.random.permutation(n_total)[:args.n_sample]])
 for i, video in enumerate(all_data_np):
     path = os.path.join(args.out_dir, f'sample_{args.test_idx+i:04d}-0.npy')
-    np.save(path, video)
+    np.save(path, (video*255).astype(np.uint8))
