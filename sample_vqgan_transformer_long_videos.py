@@ -141,23 +141,24 @@ def sample_long_fast(gpt, temporal_pix, spatial_pix, obs_frames, batch_size, cla
     obs_lat = obs_frames // temporal_ds
     
     dataset = TensorDataset(data_folder, sequence_length=None, train=False)
+    c_indices = repeat(torch.tensor([class_label]), '1 -> b 1', b=batch_size).to(gpt.device)  # class token
     with torch.no_grad():
         index_sample_all = torch.zeros([batch_size, temporal_lat*spatial_lat**2]).long().cuda()
         gpt.first_stage_model.eval()
         for (i, j) in enumerate(range(test_index, test_index+batch_size)):
             encoded = gpt.first_stage_model.encode(dataset[j]["video"][:, :obs_frames].unsqueeze(0).cuda())
             index_sample_all[i, :obs_lat*spatial_lat**2] = encoded.flatten()
-        c_indices = repeat(torch.tensor([class_label]), '1 -> b 1', b=batch_size).to(gpt.device)  # class token
         t1 = time.time()
 
         print('doing transformer bit')
         for temporal_chunk in range(obs_lat, temporal_lat):
             index = temporal_chunk*spatial_lat**2
-            window_start = max(0, index-15*spatial_lat**2)   # look at previous 15 temporal slices, predict next
+            window_start = max(0, index-3*spatial_lat**2)   # look at previous 3 temporal slices, predict next
             x_past = index_sample_all[:, window_start:index]
             print('sampling with past', x_past.shape)
             sampled = sample_with_past(torch.cat([c_indices, x_past], dim=1), gpt.transformer, steps=spatial_lat**2,
                                        sample_logits=True, top_k=args.top_k, temperature=temperature, top_p=args.top_p)
+            print(sampled)
             print('assigning...')
             index_sample_all[:, temporal_chunk*spatial_lat**2:(temporal_chunk+1)*spatial_lat**2] = sampled
 
