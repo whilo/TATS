@@ -41,6 +41,9 @@ parser.add_argument('--sample_idx', type=int, default=0)
 parser.add_argument('--out_dir', type=str, required=True)
 args = parser.parse_args()
 
+with open(os.path.join(args.out_dir, 'command.txt'), 'a') as f:
+    f.write(str(args))
+
 gpt = load_transformer(args.gpt_ckpt, vqgan_ckpt=args.vqgan_ckpt).cuda().eval()
 
 args.save_videos = True
