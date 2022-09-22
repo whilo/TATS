@@ -225,7 +225,7 @@ else:
 print('saving numpy file to %s...'%save_np)
 os.makedirs(os.path.dirname(save_np), exist_ok=True)
 all_data_np = np.concatenate(all_data, axis=0)
-N, _, C, T, H, W = all_data_np.shape
+N, C, T, H, W = all_data_np.shape
 assert N == args.n_sample
 all_data_np = np.transpose(all_data_np.reshape(-1, C, T, H, W), (0, 2, 1, 3, 4))
 n_total = all_data_np.shape[0]
