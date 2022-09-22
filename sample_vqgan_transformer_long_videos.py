@@ -35,18 +35,28 @@ parser.add_argument('--run', type=int, default=0)
 parser.add_argument('--dataset', type=str, default='ucf101')
 parser.add_argument('--data_folder', type=str)
 parser.add_argument('--class_cond', action='store_true')
-parser.add_argument('--save_videos', action='store_true')
-parser.add_argument('--test_index', type=int, default=1)
+#parser.add_argument('--save_videos', action='store_true')
+parser.add_argument('--test_idx', type=int, default=None)
+parser.add_argument('--sample_idx', type=int, default=0)
+parser.add_argument('--out_dir', type=str, required=True)
 args = parser.parse_args()
 
 gpt = load_transformer(args.gpt_ckpt, vqgan_ckpt=args.vqgan_ckpt).cuda().eval()
+
+args.save_videos = True
+
+if args.test_idx is None:
+    assert "SLURM_ARRAY_TASK_ID" in os.environ
+    task_id = int(os.environ["SLURM_ARRAY_TASK_ID"])
+    args.test_idx = task_id * args.n_sample
+    print(f"Only generating predictions for the batch #{task_id}.")
 
 ########################################################################
 ### spatial sliding window
 
 if args.top_k:
-    save_dir = '%s/videos/%s_long_1024/temp_%d_%d_topp%.2f_topk%d_testindex_%d'%(args.save, args.dataset, args.temporal_pix, args.obs_frames, args.top_p, args.top_k, args.test_index)
-    save_np = '%s/numpy_files/%s_long_1024/temp_%d_%d_topp%.2f_topk%d_run%d_eval_testindex_%d.npy'%(args.save, args.dataset, args.temporal_pix, args.obs_frames, args.top_p, args.top_k, args.run, args.test_index)
+    save_dir = '%s/videos/%s_long_1024/temp_%d_%d_topp%.2f_topk%d_testindex_%d'%(args.save, args.dataset, args.temporal_pix, args.obs_frames, args.top_p, args.top_k, args.test_idx)
+    save_np = '%s/numpy_files/%s_long_1024/temp_%d_%d_topp%.2f_topk%d_run%d_eval_testindex_%d.npy'%(args.save, args.dataset, args.temporal_pix, args.obs_frames, args.top_p, args.top_k, args.run, args.test_idx)
 else:
     save_dir = '%s/videos/%s_long_1024/temp_%d_%d_toppNA_topkNA_'%(args.save, args.dataset, args.temporal_pix, args.obs_frames)
     save_np = '%s/numpy_files/%s_long_1024/temp_%d_%d_toppNA_topkNA_run%d_eval.npy'%(args.save, args.dataset, args.temporal_pix, args.obs_frames, args.run)
@@ -123,7 +133,7 @@ os.makedirs(save_dir, exist_ok=True)
 from tats.data import TensorDataset
 
 @torch.no_grad()
-def sample_long_fast(gpt, temporal_pix, spatial_pix, obs_frames, batch_size, class_label, temperature=1., save_videos=False, test_index=0, data_folder="",
+def sample_long_fast(gpt, temporal_pix, spatial_pix, obs_frames, batch_size, class_label, temperature=1., save_videos=False, test_idx=0, data_folder="",
                      temporal_ds=4, spatial_ds=8):
     """
     gpt: model
@@ -145,7 +155,7 @@ def sample_long_fast(gpt, temporal_pix, spatial_pix, obs_frames, batch_size, cla
     with torch.no_grad():
         index_sample_all = torch.zeros([batch_size, temporal_lat*spatial_lat**2]).long().cuda()
         gpt.first_stage_model.eval()
-        for (i, j) in enumerate(range(test_index, test_index+batch_size)):
+        for (i, j) in enumerate(range(test_idx, test_idx+batch_size)):
             encoded = gpt.first_stage_model.encode(dataset[j]["video"][:, :obs_frames].unsqueeze(0).cuda())
             index_sample_all[i, :obs_lat*spatial_lat**2] = encoded.flatten()
         t1 = time.time()
@@ -199,7 +209,7 @@ else:
     n_batch = args.n_sample//args.batch_size
     with torch.no_grad():
         for sample_id in tqdm.tqdm(range(n_batch)):
-            x_sample = sample_long_fast(gpt, args.temporal_pix, args.spatial_pix, obs_frames=args.obs_frames, batch_size=args.batch_size, class_label=0, save_videos=args.save_videos, test_index=args.test_index,
+            x_sample = sample_long_fast(gpt, args.temporal_pix, args.spatial_pix, obs_frames=args.obs_frames, batch_size=args.batch_size, class_label=0, save_videos=args.save_videos, test_idx=args.test_idx,
                                         data_folder=args.data_folder)
             if args.save_videos:
                 save_video_grid(x_sample, os.path.join(save_dir, 'generation_%d_%d.avi'%(0, sample_id+args.run*args.n_sample)), n_row)
@@ -214,14 +224,12 @@ else:
 
 print('saving numpy file to %s...'%save_np)
 os.makedirs(os.path.dirname(save_np), exist_ok=True)
-all_data_np = np.array(all_data)
-if not args.save_videos:
-    _, _, T, H, W = all_data_np.shape
-    all_data_np = all_data_np.reshape(-1, T, H, W)
-    n_total = all_data_np.shape[0]
-    np.save(save_np, all_data_np[np.random.permutation(n_total)[:args.n_sample]])
-else:
-    _, _, C, T, H, W = all_data_np.shape
-    all_data_np = np.transpose(all_data_np.reshape(-1, C, T, H, W), (0, 2, 3, 4, 1))
-    n_total = all_data_np.shape[0]
-    np.save(save_np, (all_data_np*255).astype(np.uint8)[np.random.permutation(n_total)[:args.n_sample]])
+all_data_np = np.concatenate(all_data, axis=0)
+N, _, C, T, H, W = all_data_np.shape
+assert N == args.n_sample
+all_data_np = np.transpose(all_data_np.reshape(-1, C, T, H, W), (0, 2, 1, 3, 4))
+n_total = all_data_np.shape[0]
+np.save(save_np, (all_data_np*255).astype(np.uint8)[np.random.permutation(n_total)[:args.n_sample]])
+for i, video in enumerate(all_data_np):
+    path = os.path.join(args.out_dir, f'sample_{args.test_idx+i:04d}-0.npy')
+    np.save(path, video)
