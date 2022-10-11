@@ -153,7 +153,7 @@ def sample_long_fast(gpt, temporal_pix, spatial_pix, obs_frames, batch_size, cla
     spatial_lat = spatial_pix // spatial_ds
     obs_lat = obs_frames // temporal_ds
     
-    dataset = TensorDataset(data_folder, sequence_length=None, train=False)
+    dataset = TensorDataset(data_folder, sequence_length=None, train=False, resolution=args.spatial_pix)
     c_indices = repeat(torch.tensor([class_label]), '1 -> b 1', b=batch_size).to(gpt.device)  # class token
     with torch.no_grad():
         index_sample_all = torch.zeros([batch_size, temporal_lat*spatial_lat**2]).long().cuda()
@@ -208,7 +208,7 @@ else:
     n_batch = args.n_sample//args.batch_size
     with torch.no_grad():
         for sample_id in tqdm.tqdm(range(n_batch)):
-            x_sample = sample_long_fast(gpt, args.temporal_pix, args.spatial_pix, obs_frames=args.obs_frames, batch_size=args.batch_size, class_label=0, save_videos=args.save_videos, test_idx=args.test_idx,
+            x_sample = sample_long_fast(gpt, args.temporal_pix, args.spatial_pix, obs_frames=args.obs_frames, batch_size=args.batch_size, class_label=0, save_videos=args.save_videos, test_idx=args.test_idx+sample_id*n_batch,
                                         data_folder=args.data_folder)
             if args.save_videos:
                 save_video_grid(x_sample, os.path.join(save_dir, 'generation_%d_%d.avi'%(0, sample_id+args.run*args.n_sample)), n_row)
@@ -230,5 +230,5 @@ all_data_np = np.transpose(all_data_np.reshape(-1, C, T, H, W), (0, 2, 1, 3, 4))
 n_total = all_data_np.shape[0]
 #np.save(save_np, (all_data_np*255).astype(np.uint8)[np.random.permutation(n_total)[:args.n_sample]])
 for i, video in enumerate(all_data_np):
-    path = os.path.join(args.out_dir, f'sample_{args.test_idx+i:04d}-0.npy')
+    path = os.path.join(args.out_dir, f'sample_{args.test_idx+i:04d}-{args.sample_idx}.npy')
     np.save(path, (video*255).astype(np.uint8))
