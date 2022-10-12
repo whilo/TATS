@@ -163,7 +163,6 @@ def sample_long_fast(gpt, temporal_pix, spatial_pix, obs_frames, batch_size, cla
             index_sample_all[i, :obs_lat*spatial_lat**2] = encoded.flatten()
         t1 = time.time()
 
-        print('doing transformer bit')
         for temporal_chunk in range(obs_lat, temporal_lat):
             index = temporal_chunk*spatial_lat**2
             window_start = max(0, index-3*spatial_lat**2)   # look at previous 3 temporal slices, predict next
@@ -180,8 +179,28 @@ def sample_long_fast(gpt, temporal_pix, spatial_pix, obs_frames, batch_size, cla
         with torch.no_grad():
             x_sample = []
             for i in range(batch_size):
-                x_sample.append(gpt.first_stage_model.decode(index_sample_all[i:i+1, :, :, :].cuda()).cpu())
-            x_sample = torch.cat(x_sample, 0)
+                x_sample.append(torch.zeros(3, temporal_pix, spatial_pix, spatial_pix))
+                # OOM on plai if temporal_lat > 100
+                step = 50
+                tl_start, tl_end = 0, step
+                tl_overlap = 6
+                while True:
+                    decoded = gpt.first_stage_model.decode(index_sample_all[i:i+1, tl_start:tl_end, :, :].cuda()).cpu().squeeze(0)
+                    tl_start_write = tl_start if tl_start == 0 else tl_start + tl_overlap//2
+                    tl_end_write = tl_end
+                    tp_start = tl_start * temporal_ds
+                    tp_start_write = tl_start_write * temporal_ds
+                    tp_end_write = tl_end_write * temporal_ds
+                    x_sample[-1][:, tp_start_write:tp_end_write] = decoded[:, tp_start_write-tp_start:tp_end_write-tp_start]
+                    #x_sample[-1] = x_sample[-1][:, :tp_start_write]
+                    #x_sample[-1] = torch.cat([x_sample[-1], decoded], dim=0)
+                    if tl_end >= temporal_lat:
+                        break
+                    else:
+                        tl_start = tl_end - tl_overlap
+                        tl_end = tl_start + step
+                #x_sample.append(gpt.first_stage_model.decode(index_sample_all[i:i+1, :, :, :].cuda()).cpu())
+            x_sample = torch.stack(x_sample, 0)
             x_sample = torch.clamp(x_sample, -0.5, 0.5) + 0.5
         return x_sample
     else:
